@@ -14,7 +14,7 @@ const state = {
         new Todo('Piedra del poder'),
         new Todo('Piedra del espacio'),
     ],
-    filters: Filters
+    filters: Filters.All,
 }
 
 const initStore = () => {
@@ -39,7 +39,7 @@ const getTodos = (filter = Filters.All) => {
             return state.todos.filter(todo => !todo.done);
 
         default:
-            throw new Error(`Option ${ filter } is not valid.`)
+            throw new Error(`Option ${ filter } is not valid.`);
 
     }
 }
