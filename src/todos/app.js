@@ -3,6 +3,7 @@ import html from './app.html?raw'
 import todoStore from '../store/todo.store'
 
 const ElementIDs = {
+    ClearCompleted: '.clear-completed',
     TodoList: '.todo-list',
     NewTodoInput: '#new-todo-input',
 }
@@ -30,6 +31,7 @@ export const App = (elementId) => {
 
     const newDescriptionInput = document.querySelector(ElementIDs.NewTodoInput);
     const todoListUl = document.querySelector(ElementIDs.TodoList);
+    const clearCompletedButton = document.querySelector(ElementIDs.ClearCompleted)
 
 
     newDescriptionInput.addEventListener('keyup', (event) => {
@@ -55,4 +57,8 @@ export const App = (elementId) => {
         displayTodos();
     })
 
+    clearCompletedButton.addEventListener('click', () => {
+        todoStore.deleteCompleted();
+        displayTodos();
+    })
 }
